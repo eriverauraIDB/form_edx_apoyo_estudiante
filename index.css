@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+* {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --blue_IDB: #004e70;
+  --grey_IDB: #5d7e95;
+  --yellow_IDB: #fbb034;
+  --orange_IDB: #e9540d;
+}
+
+h1,
+strong {
+  color: var(--blue_IDB);
+}
+
+span {
+  color: var(--orange_IDB);
+}
+
+a:hover {
+  color: var(--blue_IDB) !important;
+}
+
+a {
+  color: var(--grey_IDB) !important;
+}
+
+.btn-primary {
+  background-color: var(--grey_IDB) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: var(--blue_IDB) !important;
+}
+
+.card-footer_title {
+  font-size: 1.5em;
+  color: var(--blue_IDB);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: none !important;
+  -webkit-box-shadow: 1px 1px 13px 2px var(--grey_IDB);
+  box-shadow: 1px 1px 13px 2px var(--grey_IDB) !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .row{
+    flex-direction: column;
+  }
+  .card{
+    border: none !important;
+  }
+  .form-check-inline {
+    display: inherit !important;}
+}

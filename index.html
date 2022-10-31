@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container-sm">
+      <div class="card">
+        <div class="me-sm-3 ms-sm-3 mt-sm-3">
+          <h1 class="mb-3 mt-3">Apoyo al participante</h1>
+          <p>
+            Si no has encontrado respuesta a tus dudas ni en
+            <a
+              href="https://courses.edx.org/courses/course-v1:IDBx+23+3T2021/fa892daf406d4a4ca6239b0fbe928700/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >FAQ Generales</a
+            >
+            ni en
+            <a
+              href="https://courses.edx.org/courses/course-v1:IDBx+23+3T2021/b764dd1f29b243b5a771b0b98b4a3303"
+              target="_blank"
+              rel="noopener noreferrer"
+              >FAQ Técnicas</a
+            >, por favor, rellena el formulario que verás a continuación para
+            que podamos ayudarte lo antes posible.
+          </p>
+          <p>
+            Cuando pulses en Enviar, una ventana emergente te avisará que el
+            formulario ha sido enviado y recibirás una notificación en tu correo
+            con el número de solicitud. Por favor, verifica tu bandeja de correo
+            no deseado.
+          </p>
+        </div>
+        <hr />
+        <div class="me-sm-5 ms-sm-5">
+          <form class="row g-2">
+            <div class="col form-floating mb-sm-3">
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                aria-describedby="user's name"
+              />
+              <label for="inputName">
+                Nombre
+                <span>*</span>
+              </label>
+            </div>
+            <div class="col form-floating mb-sm-3">
+              <input type="email" class="form-control" id="inputEmail" \ />
+              <label for="inputEmail" class="form-label"
+                >E-mail
+                <span>*</span>
+              </label>
+            </div>
+            <div class="col form-floating mb-sm-3">
+              <select
+                class="form-select"
+                id="inputCourse"
+                aria-label="Select one course"
+                disabled
+              >
+                <option selected>Curso 1</option>
+              </select>
+              <label for="inputCourse">Curso </label>
+            </div>
+            <div class="form-floating mb-sm-3">
+              <select
+                class="form-select"
+                id="inputIssue"
+                aria-label="Select one issue"
+              >
+                <option selected>Selecciona asunto</option>
+                <option value="1">
+                  Certificados y verificacion de identidad
+                </option>
+                <option value="2">Constancia de horas</option>
+                <option value="3">Pagos</option>
+                <option value="4">Problemas tecnicos</option>
+                <option value="5">Otros problemas</option>
+                <option value="6">Informacion general</option>
+              </select>
+              <label for="inputIssue"
+                >Asunto
+                <span>*</span>
+              </label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                style="height: 100px"
+                aria-label="With textarea"
+                id="inputDescription"
+              ></textarea>
+              <label for="inputDescription" class="form-label"
+                >Descripción del problema
+                <span>*</span>
+              </label>
+            </div>
+
+            <hr />
+            <div class="me-sm-4 ms-sm-4">
+              <p class="card-footer_title">Recomendado (Opcional)</p>
+              <div class="mb-3">
+                <label for="formFile" class="form-label"
+                  ><strong>Adjuntar archivo</strong></label
+                >
+                <input class="form-control" type="file" id="formFile" />
+                <div id="filelHelp" class="form-text">
+                  <small>Puede incluir capturas de pantalla o documentos</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <strong>Navegador:</strong>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="browserSelected"
+                    id="explorer"
+                  />
+                  <label class="form-check-label" for="explorer">
+                    Explorer
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="browserSelected"
+                    id="Chrome"
+                  />
+                  <label class="form-check-label" for="Chrome"> Chrome </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="browserSelected"
+                    id="Safari"
+                  />
+                  <label class="form-check-label" for="Safari"> Safari </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="browserSelected"
+                    id="Mozilla"
+                  />
+                  <label class="form-check-label" for="Mozilla">
+                    Mozilla
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="browserSelected"
+                    id="Otro"
+                  />
+                  <label class="form-check-label" for="Otro"> Otro </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <strong>Sistema operativo:</strong>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="systemOperativeSelect"
+                    id="Windows"
+                  />
+                  <label class="form-check-label" for="Windows">
+                    Windows
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="systemOperativeSelect"
+                    id="OS X"
+                  />
+                  <label class="form-check-label" for="OS X"> OS X </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="systemOperativeSelect"
+                    id="Android"
+                  />
+                  <label class="form-check-label" for="Android">
+                    Android
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="systemOperativeSelect"
+                    id="iOS"
+                  />
+                  <label class="form-check-label" for="iOS"> iOS </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="systemOperativeSelect"
+                    id="Otro"
+                  />
+                  <label class="form-check-label" for="Otro"> Otro </label>
+                </div>
+              </div>
+            </div>
+            <div class="d-md-flex justify-content-md-end mb-2 mt-2">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
