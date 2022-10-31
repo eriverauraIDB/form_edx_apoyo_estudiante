@@ -12,4 +12,9 @@ form.addEventListener("submit", (e) => {
   const browserSelected =  document.querySelector('input[name=browserSelected]:checked').value;
   const inputSystemOperativeSelect =  document.querySelector('input[name=systemOperativeSelect]:checked').value;
   console.log(inputName,inputEmail, inputDescription, inputIssue, inputCourse, browserSelected,inputSystemOperativeSelect )
+
+  if (inputName == '' || inputEmail == '' || inputDescription == '' || inputIssue == '' || inputCourse == '') {
+    alert("Name must be filled out");
+    return false;
+  }
 });
