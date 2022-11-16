@@ -1,0 +1,365 @@
+<p>
+  <img
+    src="https://studio.edx.org/asset-v1:IDBx+51x+3T2021+type@asset+block@Banner_003.jpg"
+    alt="Banner"
+    width="100%"
+  />
+</p>
+<p></p>
+<h3>
+  <span style="font-family: verdana, geneva"
+    ><span lang="ES-CL"
+      ><strong
+        ><span style="color: #006289">APOYO AL PARTICIPANTE</span></strong
+      ></span
+    ></span
+  >
+</h3>
+<p>
+  Si no has encontrado respuesta a tus dudas ni en<span style="color: #0000ff"
+    ><strong> </strong></span
+  ><span style="text-decoration: underline; color: #0000ff"
+    ><strong
+      ><a
+        href="https://courses.edx.org/courses/course-v1:IDBx+IDB51x+3T2021/b45fb3a6981c44599ff53e5f0bd1f049/"
+        target="_blank"
+        rel="noopener"
+        ><span style="color: #0000ff; text-decoration: underline"
+          >FAQ Generales</span
+        ></a
+      ></strong
+    ></span
+  >
+  ni en
+  <span style="text-decoration: underline; color: #0000ff"
+    ><strong
+      ><a
+        href="https://courses.edx.org/courses/course-v1:IDBx+IDB51x+3T2021/392b9479ac9f4b02ada54e5a47a70d3d/"
+        target="_blank"
+        rel="noopener"
+        ><span style="color: #0000ff; text-decoration: underline"
+          >FAQ Técnicas</span
+        ></a
+      ></strong
+    ></span
+  >, por favor, rellena el formulario que verás a continuación para que podamos
+  ayudarte lo antes posible.
+</p>
+<p>
+  Cuando pulses en <em>enviar</em>, una ventana emergente te avisará que el
+  formulario ha sido enviado y recibirás una notificación en tu correo con el
+  número de solicitud. Por favor, verifica tu bandeja de correo no deseado.
+</p>
+<div class="boxContent span9" style="margin: 0 auto">
+  <p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      // <![CDATA[
+      $(document).ready(function () {
+        $("#course").attr("selected", "selected");
+      });
+
+      $(document).ready(function () {
+        $("#asunto").attr("selected", "selected");
+        $("#asunto").on("change", function () {
+          if (
+            $("#asunto").val() == "Certificados y verificación de identidad"
+          ) {
+            $("#cert_auto").show();
+          } else {
+            $("#cert_auto").hide();
+          }
+          if ($("#asunto").val() == "Constancia de horas") {
+            $("#const_auto").show();
+          } else {
+            $("#const_auto").hide();
+          }
+          if ($("#asunto").val() == "Pagos") {
+            $("#pagos_auto").show();
+          } else {
+            $("#pagos_auto").hide();
+          }
+          if ($("#asunto").val() == "Otros problemas") {
+            $("#otros_auto").show();
+          } else {
+            $("#otros_auto").hide();
+          }
+          if (
+            $("#asunto").val() == "Pagos" ||
+            $("#asunto").val() == "Certificados y verificación de identidad" ||
+            $("#asunto").val() == "Constancia de horas"
+          ) {
+            $("#control_send").hide();
+          } else {
+            $("#control_send").show();
+          }
+        });
+      });
+
+      function enviar() {
+        var isValidToSend = true;
+        var mensajeError = "";
+        if (document.getElementById("nombre").value == "") {
+          isValidToSend = false;
+          mensajeError = "\nFalta nombre";
+        }
+        if (document.getElementById("email").value == "") {
+          isValidToSend = false;
+          mensajeError += "\nFalta email";
+        }
+        if (document.getElementById("asunto").value == "") {
+          isValidToSend = false;
+          mensajeError += "\nDebe seleccionar un asunto";
+        }
+        if (document.getElementById("courseMOOC").value == "") {
+          isValidToSend = false;
+          mensajeError += "\nDebe seleccionar un curso";
+        }
+        if (isValidToSend) document.getElementById("formulario").submit();
+        else alert(mensajeError);
+      }
+
+      function validarEmail(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)) {
+          alert("La dirección de email " + valor + " es correcta.");
+        } else {
+          alert("La dirección de email es incorrecta.");
+        }
+      }
+      // ]]>
+    </script>
+    <script>
+      // <![CDATA[
+      function revisar() {
+        valor = document.getElementById("nombre").value;
+        if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+          alert("[ERROR] Debe añadir un nombre");
+          return false;
+        }
+        /* validación del e-mail */
+        var ercorreo = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
+        if (!ercorreo.test(formulario.email.value)) {
+          alert("La dirección insertada no es un correo electrónico válido.");
+          return false;
+        }
+        /* validación de tipo de curso */
+        indice = document.getElementById("asunto").selectedIndex;
+        if (indice == null || indice == 0) {
+          alert("Debe seleccionar algún asunto.");
+          return false;
+        }
+        valor = document.getElementById("mensaje").value;
+        if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+          alert("[ERROR] Debe añadir un descripción de su solicitud");
+          return false;
+        }
+        /* si no hemos detectado fallo devolvemos TRUE */
+        return true;
+      }
+      // ]]>
+    </script>
+  </p>
+  <form
+    action="https://www.indes-idbx.org/help/ticket-enviado-correctamente-RRun.php"
+    enctype="multipart/form-data"
+    id="formulario"
+    method="post"
+    name="formulario"
+    target="_self"
+    onsubmit="return revisar(); return revisarcorreo();"
+  >
+    <p style="margin-left: 9%">
+      <strong>Nombre</strong> <span style="color: #ff0000">*</span> <br /><input
+        id="nombre"
+        name="nombre"
+        size="50"
+        type="text"
+        style="width: 90%; padding: 10px"
+      />
+    </p>
+    <p style="margin-left: 9%">
+      <strong>E-mail</strong> (la dirección asociada a tu cuenta en edX)
+      <span style="color: #ff0000">*</span> <br /><input
+        id="email"
+        name="email"
+        size="50"
+        type="text"
+        style="width: 90%; padding: 10px"
+      />
+    </p>
+    <!--CURSOS MOOC-->
+    <p style="margin-left: 9%" id="MOOC" name="MOOC">
+      <strong>Curso</strong> <span style="color: #ff0000">*</span> <br /><select
+        name="courseMOOC"
+        style="width: 90%; height: 40px"
+      >
+        �_�_�_�_
+        <option
+          value="Acuerdos comerciales para fomentar las cadenas regionales de valor"
+          selected="selected"
+        >
+          Acuerdos comerciales para fomentar las cadenas regionales de valor
+        </option>
+      </select>
+    </p>
+    <p style="margin-left: 9%">
+      <strong>Asunto</strong> <span style="color: #ff0000">*</span>
+      <br /><select id="asunto" name="asunto" style="width: 90%; height: 40px">
+        <option value="">- Seleccione un tema -</option>
+        <option value="Certificados y verificación de identidad">
+          Certificados y verificación de identidad
+        </option>
+        <option value="Constancia de horas">Constancia de horas</option>
+        <option value="Pagos">Pagos</option>
+        <option value="Problemas técnicos">Problemas técnicos</option>
+        <option value="Otros problemas">Otros problemas</option>
+        <option value="Información general">Información general</option>
+      </select>
+    </p>
+    <p style="margin-left: 9%; display: none" id="cert_auto" name="cert_auto">
+      <strong>Certificados y verificación de identidad</strong><br />El Banco
+      Interamericano de Desarrollo ofrece certificados verificados por un pago
+      nominal de 25 dólares americanos. Para recibir un certificado verificado
+      es necesario realizar el pago y el proceso de verificación fotográfica de
+      identidad (utilizando una cámara web) antes de la fecha límite estalecida
+      en el curso.<br /><br />Todos los cursos del Programa IDBx del Banco
+      Interamericano de Desarrollo pueden ser tomados gratuitamente. Aunque no
+      se otorgan certificados para aquellos que estén inscritos de manera
+      gratuita, podrás imprimir tu página de progreso para demostrar que haz
+      finalizado el curso de forma exitosa.<br />En el pasado, edX también
+      ofrecía cetificados de Código de Honor. Sin embargo, esta opción ya no
+      existe. Si fuiste parte de un curso que ofrecía un certificado de Código
+      de Honor, todavía tendrás acceso a él en tu panel de control en
+      edx.org.<br /><br />Si tiene problemas para realizar la verificación de
+      identidad, póngase en contacto con
+      <a
+        style="color: #0000ff; text-decoration: underline"
+        href="mailto:info@edx.org"
+        >info@edx.org</a
+      >.<br /><br />Para conseguir más información sobre los certificados
+      verificados, visita la página de
+      <a
+        style="color: #0000ff; text-decoration: underline"
+        href="https://www.edx.org/es/verified-certificate"
+        target="_new"
+        >certificados verificados</a
+      >
+      (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic en
+      <a
+        href="#"
+        style="color: #0000ff; text-decoration: underline"
+        onclick="$('#control_send').show();"
+        >Generar ticket de consulta</a
+      >.
+    </p>
+    <p style="margin-left: 9%; display: none" id="const_auto" name="const_auto">
+      <strong>Constancia de horas</strong><br />El Banco Interamericano de
+      Desarrollo emite una constancia de horas que deberá ser acompañada por el
+      certificado verificado correspondiente. La constancia de horas está
+      disponible en la sección "Material del Curso", en la columna derecha e la
+      página de inicio del curso.<br /><br />Todos los cursos del Programa IDBx
+      del Banco Interamericano de Desarrollo pueden ser tomados gratuitamente.
+      Aunque no se otorgan certificados para aquellos que estén inscritos de
+      manera gratuita, podrás imprimir tu página de progreso para demostrar que
+      haz finalizado el curso de forma exitosa. <br /><br />Si aún tiene dudas,
+      haga clic en
+      <a
+        style="color: #0000ff; text-decoration: underline"
+        href="#"
+        onclick="$('#control_send').show();"
+        >Generar ticket de consulta</a
+      >.
+    </p>
+    <p style="margin-left: 9%; display: none" id="pagos_auto" name="pagos_auto">
+      <strong>Pagos</strong><br />El Banco Interamericano de Desarrollo no
+      gestiona los pagos dentro de la plataforma edX. Para poder realizar un
+      pago, deberás ingresar a tu panel de control haciendo clic en tu nombre en
+      la esquina superior derecha de la página de edX, y hacer clic en el botón
+      "Optar por el Certificado Verificado", en el curso correspondiente. Una
+      vez hecho esto, podrá realizar el pago con una tarjeta de crédito o con
+      PayPal. Si cuenta con un código de cupón, recuerde utilizarlo en esta
+      pantalla.<br /><br />Si tiene problemas para realizar un pago, póngase en
+      contacto con
+      <a
+        style="color: #0000ff; text-decoration: underline"
+        href="mailto:info@edx.org"
+        >info@edx.org</a
+      >.<br /><br />Para conseguir más información sobre los certificados
+      verificados, visita la página de
+      <a
+        style="color: #0000ff; text-decoration: underline"
+        href="https://www.edx.org/es/verified-certificate"
+        target="_new"
+        >certificados verificados</a
+      >
+      (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic en
+      <a
+        href="#"
+        style="color: #0000ff; text-decoration: underline"
+        onclick="$('#control_send').show();"
+        >Generar ticket de consulta</a
+      >.
+    </p>
+    <p
+      style="margin-left: 9%; display: none; color: red"
+      id="otros_auto"
+      name="otros_auto"
+    >
+      AVISO: Si elige la opción "Otros problemas" tardaremos más tiempo en
+      gestionar la solicitud.
+    </p>
+    <div id="control_send" style="display: block">
+      <p style="margin-left: 9%">
+        <strong>Descripción del problema</strong>
+        <span style="color: #ff0000">*</span>
+      </p>
+      <p style="margin-left: 9%">
+        <textarea
+          style="width: 90%"
+          id="mensaje"
+          name="mensaje"
+          rows="10"
+        ></textarea>
+      </p>
+      <div
+        style="
+          border-bottom: 3px solid rgba(0, 61, 87, 0.73);
+          border-top: 3px solid rgba(0, 61, 87, 0.73);
+        "
+      >
+        <p style="margin-left: 9%"><strong>RECOMENDADO </strong>(Opcional)</p>
+        <p style="margin-left: 14%">
+          <strong>Adjuntar archivo </strong
+          ><input id="archivo1" name="archivo1" type="file" /><br /><span
+            style="font-size: small"
+            >Puede incluir capturas de pantalla o documentos.</span
+          >
+        </p>
+        <p style="margin-left: 14%">
+          <strong>Navegador</strong>:
+          <input name="browser" type="radio" value="Explorer" />Explorer
+          <input name="browser" type="radio" value="Chrome" />Chrome
+          <input name="browser" type="radio" value="Safari" />Safari
+          <input name="browser" type="radio" value="Mozilla" />Mozilla
+          <input name="browser" type="radio" value="Otro" />Otro
+        </p>
+        <p style="margin-left: 14%">
+          <strong>Sistema operativo</strong>:
+          <input name="OS" type="radio" value="Windows" />Windows
+          <input name="OS" type="radio" value="OS X" />OS X
+          <input name="OS" type="radio" value="Android" />Android
+          <input name="OS" type="radio" value="iOS" />iOS
+          <input name="OS" type="radio" value="Otro" />Otro
+        </p>
+      </div>
+      <p style="margin-left: 9%; float: right; padding: 10px">
+        <input
+          type="submit"
+          name="submit"
+          value="Enviar"
+          style="padding: 10px; font-size: 20px"
+        />
+      </p>
+    </div>
+  </form>
+</div>
