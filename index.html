@@ -1,180 +1,832 @@
-<!DOCTYPE html>
-<html lang="en">
+<div
+  style="
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #5d7e95 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%, #5d7e95 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #5d7e95 100%);
+  "
+>
+  <style>
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      border-color: none;
+      -webkit-box-shadow: 1px 1px 13px 2px #004e70;
+      box-shadow: 1px 1px 7px -1px #004e70;
+      outline: #004e70;
+    }
+  </style>
+  <div
+    style="
+      margin: 0 6.25rem;
+      background-color: #fff;
+      border: 2rem solid linear-gradient(to bottom, #ffffff 0%, #5d7e95 100%);
+    "
+  >
+    <div
+      style="
+        background: #004e70;
+        background: -moz-linear-gradient(top, #004e70 0%, #5d7e95 100%);
+        background: -webkit-linear-gradient(top, #004e70 0%, #5d7e95 100%);
+        background: linear-gradient(to bottom, #004e70 0%, #5d7e95 100%);
+        border-radius: 0px;
+        height: 6.87rem;
+        display: flex;
+        align-items: center;
+      "
+    >
+      <h1
+        style="
+          color: #fefefe;
+          font-family: Arial, Helvetica, sans-serif;
+          text-shadow: 2px 2px 3px #000000;
+          margin: 2.6rem;
+          font-weight: 500;
+          line-height: 1.2;
+          font-size: 2.5rem;
+        "
+        lang="ES-CL"
+      >
+        Apoyo al participante
+      </h1>
+    </div>
+    <div style="margin: 2.6rem 2.6rem 0">
+      <p
+        style="
+          font-family: Arial, Helvetica, sans-serif;
+          margin-top: 0;
+          margin-bottom: 1rem;
+          line-height: 24px;
+        "
+      >
+        Si no has encontrado respuesta a tus dudas en las pestañas "FAQ
+        Generales" o "FAQ Técnicas", por favor, completa el formulario que verás
+        a continuación para que podamos ayudarte lo antes posible.
+      </p>
+      <p
+        style="
+          font-family: Arial, Helvetica, sans-serif;
+          margin-top: 0;
+          margin-bottom: 1rem;
+          line-height: 24px;
+        "
+      >
+        Cuando pulses en "Enviar", una ventana emergente te avisará que el
+        formulario ha sido enviado y recibirás una notificación en tu correo con
+        el número de solicitud. Por favor, verifica tu bandeja de correo no
+        deseado.
+      </p>
+      <hr
+        style="
+          margin: 1rem 0;
+          color: inherit;
+          border: 0;
+          border-top: 1px solid;
+          opacity: 0.25;
+        "
+      />
+    </div>
+    <div class="boxContent span9" style="margin: 0 auto; height: 100vh">
+      <p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+          // <![CDATA[
+          $(document).ready(function () {
+            $("#course").attr("selected", "selected");
+          });
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Form</title>
-  <link rel="stylesheet" href="./design/index.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-</head>
+          $(document).ready(function () {
+            $("#asunto").attr("selected", "selected");
+            $("#asunto").on("change", function () {
+              if (
+                $("#asunto").val() == "Certificados y verificación de identidad"
+              ) {
+                $("#cert_auto").show();
+              } else {
+                $("#cert_auto").hide();
+              }
+              if ($("#asunto").val() == "Constancia de horas") {
+                $("#const_auto").show();
+              } else {
+                $("#const_auto").hide();
+              }
+              if ($("#asunto").val() == "Pagos") {
+                $("#pagos_auto").show();
+              } else {
+                $("#pagos_auto").hide();
+              }
+              if ($("#asunto").val() == "Otros problemas") {
+                $("#otros_auto").show();
+              } else {
+                $("#otros_auto").hide();
+              }
+              if (
+                $("#asunto").val() == "Pagos" ||
+                $("#asunto").val() ==
+                  "Certificados y verificación de identidad" ||
+                $("#asunto").val() == "Constancia de horas"
+              ) {
+                $("#control_send").hide();
+              } else {
+                $("#control_send").show();
+              }
+            });
+          });
 
-<body>
-  <div class="container-sm">
-    <div class="card">
-      <div class="card-header">
-        <h1 class="m-sm-4">Apoyo al participante</h1>
-      </div>
-      <div class="me-sm-5 ms-sm-5 mt-sm-3 container-text">
-        <p>
-          Si no has encontrado respuesta a tus dudas en las pestañas "FAQ
-          Generales" o "FAQ Técnicas", por favor, completa el formulario que
-          verás a continuación para que podamos ayudarte lo antes posible.
+          function enviar() {
+            var isValidToSend = true;
+            var mensajeError = "";
+            if (document.getElementById("nombre").value == "") {
+              isValidToSend = false;
+              mensajeError = "\nFalta nombre";
+            }
+            if (document.getElementById("email").value == "") {
+              isValidToSend = false;
+              mensajeError += "\nFalta email";
+            }
+            if (document.getElementById("asunto").value == "") {
+              isValidToSend = false;
+              mensajeError += "\nDebe seleccionar un asunto";
+            }
+            if (document.getElementById("courseMOOC").value == "") {
+              isValidToSend = false;
+              mensajeError += "\nDebe seleccionar un curso";
+            }
+            if (isValidToSend) document.getElementById("formulario").submit();
+            else alert(mensajeError);
+          }
+
+          function validarEmail(email) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)) {
+              alert("La dirección de email " + valor + " es correcta.");
+            } else {
+              alert("La dirección de email es incorrecta.");
+            }
+          }
+          // ]]>
+        </script>
+        <script>
+          // <![CDATA[
+          function revisar() {
+            valor = document.getElementById("nombre").value;
+            if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+              alert("[ERROR] Debe añadir un nombre");
+              return false;
+            }
+            /* validación del e-mail */
+            var ercorreo = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
+            if (!ercorreo.test(formulario.email.value)) {
+              alert(
+                "La dirección insertada no es un correo electrónico válido."
+              );
+              return false;
+            }
+            /* validación de tipo de curso */
+            indice = document.getElementById("asunto").selectedIndex;
+            if (indice == null || indice == 0) {
+              alert("Debe seleccionar algún asunto.");
+              return false;
+            }
+            valor = document.getElementById("mensaje").value;
+            if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+              alert("[ERROR] Debe añadir un descripción de su solicitud");
+              return false;
+            }
+            /* si no hemos detectado fallo devolvemos TRUE */
+            return true;
+          }
+          // ]]>
+        </script>
+      </p>
+      <form
+        enctype="multipart/form-data"
+        id="formulario"
+        method="post"
+        name="formulario"
+        target="_self"
+        onsubmit="return revisar(); return revisarcorreo();"
+        style="margin: 0 2.6rem"
+      >
+        <div style="display: flex; align-items: center; margin-top: -1rem">
+          <div style="margin: 0 10px">
+            <label
+              style="
+                position: absolute;
+                opacity: 0.65;
+                transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+
+                padding: 1rem 0.75rem;
+                overflow: hidden;
+                text-align: start;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                pointer-events: none;
+                border: 1px solid transparent;
+                transform-origin: 0 0;
+                transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+                display: inline-block;
+                font-family: Arial, Helvetica, sans-serif;
+              "
+              >Nombre
+              <span style="color: #e9540d">*</span>
+            </label>
+            <input
+              id="nombre"
+              name="nombre"
+              size="50"
+              type="text"
+              style="
+                display: block;
+                width: 100%;
+                padding: 1.375rem 0.75rem 0.375rem;
+                font-weight: 400;
+                color: #212529;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-radius: 0.375rem;
+                height: calc(3.5rem + 2px);
+                line-height: 1.25;
+              "
+            />
+          </div>
+
+          <div style="margin: 0 10px">
+            <label
+              for="inputEmail"
+              style="
+                position: absolute;
+                opacity: 0.65;
+                transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+
+                padding: 1rem 0.75rem;
+                overflow: hidden;
+                text-align: start;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                pointer-events: none;
+                border: 1px solid transparent;
+                transform-origin: 0 0;
+                transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+                display: inline-block;
+                font-family: Arial, Helvetica, sans-serif;
+              "
+              >E-mail
+              <span style="color: #e9540d">*</span>
+            </label>
+            <input
+              id="email"
+              name="email"
+              size="50"
+              type="email"
+              style="
+                display: block;
+                width: 100%;
+                padding: 1.375rem 0.75rem 0.375rem;
+                font-weight: 400;
+                color: #212529;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-radius: 0.375rem;
+                height: calc(3.5rem + 2px);
+                line-height: 1.25;
+              "
+            />
+          </div>
+
+          <!--CURSOS MOOC-->
+          <div style="margin: 10px">
+            <p id="MOOC" name="MOOC">
+              <label
+                style="
+                  position: absolute;
+                  opacity: 0.65;
+                  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+
+                  padding: 1rem 0.75rem;
+                  overflow: hidden;
+                  text-align: start;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  pointer-events: none;
+                  border: 1px solid transparent;
+                  transform-origin: 0 0;
+                  transition: opacity 0.1s ease-in-out,
+                    transform 0.1s ease-in-out;
+                  display: inline-block;
+                  font-family: Arial, Helvetica, sans-serif;
+                "
+                >Curso</label
+              >
+              <select
+                name="courseMOOC"
+                style="
+                  display: block;
+                  width: 100%;
+                  padding: 1.375rem 0.75rem 0.375rem;
+                  -moz-padding-start: calc(0.75rem - 3px);
+                  font-size: 1rem;
+                  font-weight: 400;
+                  background-color: #e9ecef;
+                  background-repeat: no-repeat;
+                  background-position: right 0.75rem center;
+                  background-size: 16px 12px;
+                  border: 1px solid #ced4da;
+                  border-radius: 0.375rem;
+                  height: calc(3.5rem + 2px);
+                  line-height: 1.25;
+                "
+                aria-label="Select one course"
+                disabled
+              >
+                <option
+                  value="Acuerdos comerciales para fomentar las cadenas regionales de valor"
+                  selected="selected"
+                >
+                  Acuerdos comerciales para fomentar las cadenas regionales de
+                  valor
+                </option>
+              </select>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin: 0 10px">
+          <label
+            style="
+              position: absolute;
+              opacity: 0.65;
+              transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+
+              padding: 1rem 0.75rem;
+              overflow: hidden;
+              text-align: start;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              pointer-events: none;
+              border: 1px solid transparent;
+              transform-origin: 0 0;
+              transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+              display: inline-block;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+            >Asunto
+            <span style="color: #e9540d">*</span>
+          </label>
+
+          <select
+            id="asunto"
+            name="asunto"
+            style="
+              display: block;
+              width: 100%;
+              padding: 1.375rem 0.75rem 0.375rem;
+              -moz-padding-start: calc(0.75rem - 3px);
+              -moz-padding-start: calc(0.75rem - 3px);
+              font-size: 1rem;
+              font-weight: 400;
+              color: #212529;
+              background-color: #fff;
+              background-repeat: no-repeat;
+              background-position: right 0.75rem center;
+              background-size: 16px 12px;
+              border: 1px solid #ced4da;
+              border-radius: 0.375rem;
+              transition: border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              height: calc(3.5rem + 2px);
+              line-height: 1.25;
+            "
+          >
+            <option value="">- Seleccione un tema -</option>
+            <option value="Certificados y verificación de identidad">
+              Certificados y verificación de identidad
+            </option>
+            <option value="Constancia de horas">Constancia de horas</option>
+            <option value="Pagos">Pagos</option>
+            <option value="Problemas técnicos">Problemas técnicos</option>
+            <option value="Otros problemas">Otros problemas</option>
+            <option value="Información general">Información general</option>
+          </select>
+        </div>
+        <p
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin: 1rem;
+            padding: 0.6rem;
+            background: #ffffff;
+            background: -moz-linear-gradient(top, #ffffff -28%, #5d7e95 211%);
+            background: -webkit-linear-gradient(
+              top,
+              #ffffff -28%,
+              #5d7e95 211%
+            );
+            background: linear-gradient(to bottom, #ffffff -28%, #5d7e95 211%);
+          "
+          id="cert_auto"
+          name="cert_auto"
+        >
+          <strong>Certificados y verificación de identidad</strong><br />El
+          Banco Interamericano de Desarrollo ofrece certificados verificados por
+          un pago nominal de 25 dólares americanos. Para recibir un certificado
+          verificado es necesario realizar el pago y el proceso de verificación
+          fotográfica de identidad (utilizando una cámara web) antes de la fecha
+          límite estalecida en el curso.<br /><br />Todos los cursos del
+          Programa IDBx del Banco Interamericano de Desarrollo pueden ser
+          tomados gratuitamente. Aunque no se otorgan certificados para aquellos
+          que estén inscritos de manera gratuita, podrás imprimir tu página de
+          progreso para demostrar que haz finalizado el curso de forma
+          exitosa.<br />En el pasado, edX también ofrecía cetificados de Código
+          de Honor. Sin embargo, esta opción ya no existe. Si fuiste parte de un
+          curso que ofrecía un certificado de Código de Honor, todavía tendrás
+          acceso a él en tu panel de control en edx.org.<br /><br />Si tiene
+          problemas para realizar la verificación de identidad, póngase en
+          contacto con
+          <a
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            href="mailto:info@edx.org"
+            >info@edx.org</a
+          >.<br /><br />Para conseguir más información sobre los certificados
+          verificados, visita la página de
+          <a
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            href="https://www.edx.org/es/verified-certificate"
+            target="_new"
+            >certificados verificados</a
+          >
+          (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic
+          en
+          <a
+            href="#"
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            onclick="$('#control_send').show();"
+            >Generar ticket de consulta</a
+          >.
         </p>
-        <p>
-          Cuando pulses en "Enviar", una ventana emergente te avisará que el
-          formulario ha sido enviado y recibirás una notificación en tu correo
-          con el número de solicitud. Por favor, verifica tu bandeja de correo
-          no deseado.
+        <p
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin: 1rem;
+            padding: 0.6rem;
+            background: #ffffff;
+            background: -moz-linear-gradient(top, #ffffff -28%, #5d7e95 211%);
+            background: -webkit-linear-gradient(
+              top,
+              #ffffff -28%,
+              #5d7e95 211%
+            );
+            background: linear-gradient(to bottom, #ffffff -28%, #5d7e95 211%);
+          "
+          id="const_auto"
+          name="const_auto"
+        >
+          <strong>Constancia de horas</strong><br />El Banco Interamericano de
+          Desarrollo emite una constancia de horas que deberá ser acompañada por
+          el certificado verificado correspondiente. La constancia de horas está
+          disponible en la sección "Material del Curso", en la columna derecha e
+          la página de inicio del curso.<br /><br />Todos los cursos del
+          Programa IDBx del Banco Interamericano de Desarrollo pueden ser
+          tomados gratuitamente. Aunque no se otorgan certificados para aquellos
+          que estén inscritos de manera gratuita, podrás imprimir tu página de
+          progreso para demostrar que haz finalizado el curso de forma exitosa.
+          <br /><br />Si aún tiene dudas, haga clic en
+          <a
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            href="#"
+            onclick="$('#control_send').show();"
+            >Generar ticket de consulta</a
+          >
         </p>
-        <hr />
-      </div>
-      <div class="me-sm-5 ms-sm-5 mt-sm-3 container-text">
-        <form class="row g-2" id="subdmitForm" name="formEdx">
-          <div class="col form-floating mb-sm-3">
-            <input type="text" class="form-control form_control_input" id="inputName" aria-describedby="user's name" />
-            <label for="inputName">
-              Nombre
-              <span>*</span>
-            </label>
-          </div>
-          <div class="col form-floating mb-sm-3">
-            <input type="email" class="form-control form_control_input" id="inputEmail"
-              aria-describedby="user's email" />
-            <label for="inputEmail" class="form-label">E-mail
-              <span>*</span>
-            </label>
-          </div>
-          <div class="col form-floating mb-sm-3">
-            <select class="form-select" id="inputCourse" aria-label="Select one course" disabled>
-              <option value="Curso 1" selected>Curso 1</option>
-            </select>
-            <label for="inputCourse">Curso </label>
-          </div>
-          <div class="form-floating mb-sm-3">
-            <select class="form-select form_control_input" id="inputIssue" aria-label="Select one issue"
-              name="inputIssue">
-              <option value="">Selecciona asunto</option>
-              <option value="1">
-                Certificados y verificacion de identidad
-              </option>
-              <option value="2">Constancia de horas</option>
-              <option value="3">Pagos</option>
-              <option value="4">Problemas técnicos</option>
-              <option value="5">Otros problemas</option>
-              <option value="6">Información general</option>
-            </select>
-            <label for="inputIssue">Asunto
-              <span>*</span>
-            </label>
-          </div>
-          <div class="form-floating mb-3">
-            <textarea class="form-control form_control_input" style="height: 100px" aria-label="With textarea"
-              id="inputDescription"></textarea>
-            <label for="inputDescription" class="form-label">Descripción del problema
-              <span>*</span>
-            </label>
-          </div>
+        <p
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin: 1rem;
+            padding: 0.6rem;
+            background: #ffffff;
+            background: -moz-linear-gradient(top, #ffffff -28%, #5d7e95 211%);
+            background: -webkit-linear-gradient(
+              top,
+              #ffffff -28%,
+              #5d7e95 211%
+            );
+            background: linear-gradient(to bottom, #ffffff -28%, #5d7e95 211%);
+          "
+          id="pagos_auto"
+          name="pagos_auto"
+        >
+          <strong>Pagos</strong><br />El Banco Interamericano de Desarrollo no
+          gestiona los pagos dentro de la plataforma edX. Para poder realizar un
+          pago, deberás ingresar a tu panel de control haciendo clic en tu
+          nombre en la esquina superior derecha de la página de edX, y hacer
+          clic en el botón "Optar por el Certificado Verificado", en el curso
+          correspondiente. Una vez hecho esto, podrá realizar el pago con una
+          tarjeta de crédito o con PayPal. Si cuenta con un código de cupón,
+          recuerde utilizarlo en esta pantalla.<br /><br />Si tiene problemas
+          para realizar un pago, póngase en contacto con
+          <a
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            href="mailto:info@edx.org"
+            >info@edx.org</a
+          >.<br /><br />Para conseguir más información sobre los certificados
+          verificados, visita la página de
+          <a
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            href="https://www.edx.org/es/verified-certificate"
+            target="_new"
+            >certificados verificados</a
+          >
+          (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic
+          en
+          <a
+            href="#"
+            style="color: #004e70; text-decoration: underline; font-weight: 700"
+            onclick="$('#control_send').show();"
+            >Generar ticket de consulta</a
+          >.
+        </p>
+        <small
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            display: none;
+            color: #e9540d;
+            margin: 10px;
+          "
+          id="otros_auto"
+          name="otros_auto"
+        >
+          AVISO: Si elige la opción "Otros problemas" tardaremos más tiempo en
+          gestionar la solicitud.
+        </small>
+        <div id="control_send" style="margin: 1.6rem 0 0">
+          <div style="margin: 0 10px">
+            <label
+              style="
+                position: absolute;
+                opacity: 0.65;
+                transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 
-          <hr />
-          <div class="m-0">
-            <h2 class="card-secondary_title">Opcional</h2>
-            <div class="mb-3">
-              <label for="formFile" class="form-label"><strong>Adjuntar archivo</strong></label>
-              <input class="form-control" type="file" id="formFile" />
-              <div id="filelHelp" class="form-text">
-                <small>Puede incluir capturas de pantalla o documentos</small>
+                padding: 1rem 0.75rem;
+                overflow: hidden;
+                text-align: start;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                pointer-events: none;
+                border: 1px solid transparent;
+                transform-origin: 0 0;
+                transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+                display: inline-block;
+                font-family: Arial, Helvetica, sans-serif;
+              "
+              >Descripción del problema
+              <span style="color: #e9540d">*</span>
+            </label>
+            <textarea
+              style="
+                display: block;
+                resize: vertical;
+                height: 100px;
+                min-height: calc(1.5em + 0.75rem + 2px);
+                width: 100%;
+                padding: 1.375rem 0.75rem 0.375rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #212529;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-radius: 0.375rem;
+                transition: border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out;
+                margin: 0 0 2rem;
+              "
+              id="mensaje"
+              name="mensaje"
+              rows="10"
+            ></textarea>
+          </div>
+          <div>
+            <hr
+              style="
+                margin: 1rem 0;
+                color: inherit;
+                border: 0;
+                border-top: 1px solid;
+                opacity: 0.25;
+              "
+            />
+            <h2
+              style="
+                font-family: Inter, Arial, Helvetica, sans-serif;
+                font-size: 1.5em;
+                color: #004e70;
+                font-weight: 600;
+              "
+            >
+              Opcional
+            </h2>
+            <div style="margin: 1rem 0">
+              <label
+                ><strong
+                  style="
+                    font-family: Inter, Arial, Helvetica, sans-serif;
+                    color: #004e70;
+                  "
+                  >Adjuntar archivo</strong
+                >
+                <input
+                  id="archivo1"
+                  name="archivo1"
+                  type="file"
+                  style="
+                    display: block;
+                    width: 100%;
+                    padding: 0.375rem 0.75rem;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    color: #212529;
+                    background-color: #fff;
+                    background-clip: padding-box;
+                    border: 1px solid #ced4da;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    border-radius: 0.375rem;
+                    padding: 0;
+                    transition: border-color 0.15s ease-in-out,
+                      box-shadow 0.15s ease-in-out;
+
+                    line-height: 1.25;
+                  "
+                />
+              </label>
+              <div>
+                <small
+                  style="
+                    font-family: Inter, Arial, Helvetica, sans-serif;
+                    margin-top: 0.25rem;
+                    font-size: 0.75em;
+                    color: #6c757d;
+                  "
+                  >Puede incluir capturas de pantalla o documentos</small
+                >
               </div>
             </div>
-            <div class="mb-3">
-              <strong>Navegador:</strong>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="browserSelected" id="explorer" value="explorer" />
-                <label class="form-check-label" for="explorer">
-                  Explorer
-                </label>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 1rem 0;
+              "
+            >
+              <strong
+                style="
+                  font-family: Inter, Arial, Helvetica, sans-serif;
+                  color: #004e70;
+                "
+                >Navegador</strong
+              >:
+              <div style="margin: 0 10px">
+                <input name="browser" type="radio" value="Explorer" />
+                <label
+                  for="Explorer"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Explorer</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="browserSelected" id="Chrome" value="Chrome" />
-                <label class="form-check-label" for="Chrome"> Chrome </label>
+              <div style="margin: 0 10px">
+                <input name="browser" type="radio" value="Chrome" />
+                <label
+                  for="Chrome"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Chrome</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="browserSelected" id="Safari" value="Safari" />
-                <label class="form-check-label" for="Safari"> Safari </label>
+              <div style="margin: 0 10px">
+                <input name="browser" type="radio" value="Safari" />
+                <label
+                  for="Safari"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Safari</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="browserSelected" id="Mozilla" value="Mozilla" />
-                <label class="form-check-label" for="Mozilla">
-                  Mozilla
-                </label>
+              <div style="margin: 0 10px">
+                <input name="browser" type="radio" value="Mozilla" />
+                <label
+                  for="Mozilla"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Mozilla</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="browserSelected" id="Otro" value="Otro" />
-                <label class="form-check-label" for="Otro"> Otro </label>
+              <div style="margin: 0 10px">
+                <input name="browser" type="radio" value="Otro" />
+                <label
+                  for="Otro"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Otro</label
+                >
               </div>
             </div>
-            <div class="mb-3">
-              <strong>Sistema operativo:</strong>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="systemOperativeSelect" id="Windows"
-                  value="Windows" />
-                <label class="form-check-label" for="Windows">
-                  Windows
-                </label>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 1rem 0;
+              "
+            >
+              <strong
+                style="
+                  font-family: Inter, Arial, Helvetica, sans-serif;
+                  color: #004e70;
+                "
+                >Sistema operativo</strong
+              >:
+              <div style="margin: 0 10px">
+                <input name="OS" type="radio" value="Windows" />
+                <label
+                  for="Windows"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Windows</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="systemOperativeSelect" id="OS X" value="OS" />
-                <label class="form-check-label" for="OS X"> OS X </label>
+              <div style="margin: 0 0.625rem">
+                <input name="OS" type="radio" value="OS X" />
+                <label
+                  for="OS X"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >OS X</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="systemOperativeSelect" id="Android"
-                  value="Android" />
-                <label class="form-check-label" for="Android">
-                  Android
-                </label>
+              <div style="margin: 0 10px">
+                <input name="OS" type="radio" value="Android" />
+                <label
+                  for="Android"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Android</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="systemOperativeSelect" id="iOS" value="iOS" />
-                <label class="form-check-label" for="iOS"> iOS </label>
+              <div style="margin: 0 10px">
+                <input name="OS" type="radio" value="iOS" />
+                <label
+                  for="iOS"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >iOS</label
+                >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="systemOperativeSelect" id="Otro" value="Otro" />
-                <label class="form-check-label" for="Otro"> Otro </label>
+              <div style="margin: 0 10px">
+                <input name="OS" type="radio" value="Otro" />
+                <label
+                  for="Otro"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif"
+                  >Otro</label
+                >
               </div>
             </div>
           </div>
-          <div class="d-md-flex justify-content-md-end mb-2 mt-2">
-            <button class="btn btn-primary">Enviar</button>
+          <div style="display: flex; justify-content: flex-end">
+            <input
+              type="submit"
+              name="submit"
+              value="Enviar"
+              style="
+                color: #fff;
+                padding: 10px;
+                border: none;
+                border-radius: 0.375rem;
+                cursor: pointer;
+                background-color: #5d7e95;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+              "
+            />
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title card-secondary_title" id="staticBackdropLabel">
-            Aviso
-          </h5>
-          <button id="closeModal_span" type="button" class="btn-close" data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="modal-body"></div>
-        <div class="modal-footer">
-          <button id="closeModal_button" type="button" class="btn btn-primary">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-<script src="./index.js" type="module"></script>
-
-</html>
+</div>
