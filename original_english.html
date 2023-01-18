@@ -1,0 +1,140 @@
+<h1>Participant Support</h1>
+<p>If you did not find an answer to your questions in the <span style="text-decoration: underline; color: #0000ff;"><strong> <a href="https://courses.edx.org/courses/course-v1:IDBx+IDB16.11x+1T2021/9a37696d550d4f6c918a16c378e1e532/" target="_blank" rel="noopener"><span style="color: #0000ff; text-decoration: underline;">General FAQ</span></a></strong></span> or <span style="text-decoration: underline; color: #0000ff;"><strong><a href="https://courses.edx.org/courses/course-v1:IDBx+IDB16.11x+1T2021/d319281fc2f64ffe9b73f933e83412a4/" target="_blank" rel="noopener"><span style="color: #0000ff; text-decoration: underline;">Technical FAQ</span></a></strong></span> section, please fill out the form below so that we can help you as soon as possible.</p>
+<p>When you click "Submit", a pop-up window will notify you that the form has been submitted and you will receive a notification in your e-mail box with the order number. Also, check your junk e-mail folder.</p>
+<div class="boxContent span9" style="margin: 0 auto;">
+<p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>// <![CDATA[
+$(document).ready(function() {
+$('#course').attr('selected','selected');        
+});
+
+$(document).ready(function() {
+$('#asunto').attr('selected','selected');        
+$('#asunto').on('change',function(){
+  if ($("#asunto").val() == "Certificates and identity verification") {
+       $('#cert_auto').show();
+    } else {
+       $('#cert_auto').hide();
+    }
+  if ($("#asunto").val() == "Record of hours") {
+       $('#const_auto').show();
+    } else {
+       $('#const_auto').hide();
+    }
+  if ($("#asunto").val() == "Payments") {
+       $('#pagos_auto').show();
+    } else {
+       $('#pagos_auto').hide();
+    }
+    if ($("#asunto").val() == "Other issues") {
+       $('#otros_auto').show();
+    } else {
+       $('#otros_auto').hide();
+    }
+    if ($("#asunto").val() == "Payments" || $("#asunto").val() == "Certificates and identity verification" || $("#asunto").val() == "Record of hours") {
+     $('#control_send').hide();
+    } else {
+     $('#control_send').show();
+    }
+  });
+});
+
+function enviar()
+  {
+  var isValidToSend = true;
+  var mensajeError = "";
+  if (document.getElementById("nombre").value == ""){
+    isValidToSend = false;
+    mensajeError = "\nName is missing";
+  }
+  if (document.getElementById("email").value == ""){
+    isValidToSend = false;
+    mensajeError += "\nEmail is missing";
+  }
+  if (document.getElementById("asunto").value == ""){
+    isValidToSend = false;
+    mensajeError += "\nYou have to indicate a topic";
+  }
+    if (document.getElementById("courseMOOC").value == ""){
+    isValidToSend = false;
+    mensajeError += "\nYou have to select a course";
+  }
+  if(isValidToSend)
+    document.getElementById("formulario").submit();
+  else
+    alert(mensajeError);
+  }
+
+function validarEmail(email) {
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){
+   alert("The email " + valor + " is valid.");} 
+  else {
+   alert("the email entered is not valid.");
+  }
+}
+// ]]></script>
+<script>// <![CDATA[
+function revisar() { 
+valor = document.getElementById("nombre").value;
+if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+  alert('[ERROR] You have to add your name');
+  return false;
+    }
+/* validación del e-mail */
+var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;        
+if (!(ercorreo.test(formulario.email.value))) {
+alert('The email entered is not valid.');
+return false; }
+/* validación de tipo de curso */
+indice = document.getElementById("asunto").selectedIndex;
+if( indice == null || indice == 0 ) {
+alert('You have to indicate a topic.');
+  return false;
+}
+valor = document.getElementById("mensaje").value;
+if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+  alert('[ERROR] You have to add a description about the issue');
+  return false;
+    }
+/* si no hemos detectado fallo devolvemos TRUE */
+return true;
+}
+// ]]></script>
+</p>
+<form action="https://www.indes-idbx.org/help/ticket-enviado-correctamente-RRun.php" enctype="multipart/form-data" id="formulario" method="post" name="formulario" target="_self" onsubmit="return revisar(); return revisarcorreo();">
+<p style="margin-left: 9%;"><strong>Name</strong>  <span style="color: #ff0000;">*</span> <br /><input id="nombre" name="nombre" size="50" style="width: 90%; padding: 10px;" type="text" /></p>
+<p style="margin-left: 9%;"><strong>E-mail</strong>    <span style="color: #ff0000;">*</span> <br /><input id="email" name="email" size="50" style="width: 90%; padding: 10px;" type="text" /></p>
+<!--CURSOS MOOC-->
+<p style="margin-left: 9%;" id="MOOC" name="MOOC"><strong>Course</strong>    <span style="color: #ff0000;">*</span> <br /><select id="courseMOOC" name="courseMOOC" style="width: 90%; height: 40px;">
+<option value="Road Safety in the Caribbean region: Institutions and Data Management (1/3)" selected="selected">Road Safety in the Caribbean region: Institutions and Data Management (1/3)</option>
+</select></p>
+<p style="margin-left: 9%;"><strong>Topic</strong>     <span style="color: #ff0000;">*</span> <br /><select id="asunto" name="asunto" style="width: 90%; height: 40px;">
+<option value="">- Select a topic -</option>
+<option value="Certificates and identity verification">Certificates and identity verification</option>
+<option value="Record of hours">Record of hours</option>
+<option value="Payments">Payments</option>
+<option value="Technical issues">Technical issues</option>
+<option value="Other issues">Other issues</option>
+<option value="General information">General information</option>
+</select></p>
+<p style="margin-left: 9%; display: none;" id="cert_auto" name="cert_auto"><strong>Certificates and identity verification</strong><br />The Inter-American Development Bank offers verified certificates that cost US$ 25. In order to receive the verified certificate, it is necessary to make the payment and go through the identity verification process (using a webcam) before the course deadline.<br /><br />All courses in the Inter-American Development Bank IDBx Program can be made free of charge. Although no certificate is awarded to those who are enrolled for free, you can print your progress sheet to demonstrate that you have successfully completed the course. <br /><br />In the past, edX also offered Code of Honor certificates. However, this option no longer exists. If you were part of a course that offered a Code of Honor certificate, you will still have access to it on your dashboard at edx.org. <br /><br />If you find it difficult to verify your identity, please contact <a href="mailto:info@edx.org">info@edx.org</a>.<br /><br />To learn more about verified certificates, visit the <a href="https://www.edx.org/es/verified-certificate" target="_new">verified certificates</a> page. <br /><br />If you still have questions, click <a href="#" onclick="$('#control_send').show();">Create a ticket</a>.</p>
+<p style="margin-left: 9%; display: none;" id="const_auto" name="const_auto"><strong>Record of hours</strong><br />The Inter-American Development Bank issues a record of hours that must be accompanied alongside the respective verified certificate. This record of hours is available in the "Handouts" section in the right column and on the course start page ("Course" option in main menu).<br /><br />All courses in the Inter-American Development Bank IDBx Program can be taken free of charge. Although no certificate is awarded to those who are enrolled for free, you can print your progress sheet to demonstrate that you have successfully completed the course. <br /><br />If you still have questions, click <a href="#" onclick="$('#control_send').show();">Create a ticket</a>.</p>
+<p style="margin-left: 9%; display: none;" id="pagos_auto" name="pagos_auto"><strong>Payments</strong><br />The Inter-American Development Bank does not manage payments on the edX platform. To make a payment you must enter your “Dashboard” by clicking on your name in the upper right corner of the edX page and clicking the "Upgrade to Verified"in the corresponding course. Once this is done, you can make the payment with a credit card or PayPal. If you have a coupon code, remember to use it on this screen.<br /><br />If you're having trouble making a payment, please contact <a href="mailto:info@edx.org">info@edx.org</a>.<br /><br />To learn more about verified certificates, visit the <a href="https://www.edx.org/es/verified-certificate" target="_new">verified certificates</a> page. <br /><br />If you still have questions, click <a href="#" onclick="$('#control_send').show();">Create a ticket</a>.</p>
+<p style="margin-left: 9%; display: none; color: red;" id="otros_auto" name="otros_auto">WARNING: If you choose "Other issues", we will take longer to manage the request.</p>
+<div id="control_send" style="display: block;">
+<p style="margin-left: 9%;"><strong>Please describe the issue</strong>    <span style="color: #ff0000;">*</span></p>
+<p style="margin-left: 9%;"><textarea style="width: 90%;" id="mensaje" name="mensaje" rows="10"></textarea></p>
+<div style="border-bottom: 3px solid rgba(0, 61, 87, 0.73); border-top: 3px solid rgba(0, 61, 87, 0.73);">
+<p style="margin-left: 9%;"><strong>RECOMMENDED </strong>(Optional)</p>
+<p style="margin-left: 14%;"><strong>Attach file </strong><input id="archivo1" name="archivo1" type="file" /><br /><span style="font-size: small;">You can attach documents or screenshots.</span></p>
+<p style="margin-left: 14%;"><strong>Browser</strong>:   <input name="browser" value="Explorer" type="radio" />Explorer    <input name="browser" value="Chrome" type="radio" />Chrome   <input name="browser" value="Safari" type="radio" />Safari   <input name="browser" value="Mozilla" type="radio" />Mozilla   <input name="browser" value="Otro" type="radio" />Other</p>
+<p style="margin-left: 14%;"><strong>OS</strong>:   <input name="OS" value="Windows" type="radio" />Windows    <input name="OS" value="OS X" type="radio" />OS X    <input name="OS" value="Android" type="radio" />Android    <input name="OS" value="iOS" type="radio" />iOS    <input name="OS" value="Otro" type="radio" />Other</p>
+</div>
+<p style="margin-left: 9%; float: right; padding: 10px;"><input name="submit" value="Send" style="padding: 10px; font-size: 20px;" type="submit" /></p>
+</div>
+</form></div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>

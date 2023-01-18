@@ -20,6 +20,7 @@ body{
 h1 {
   color: var(--white_IDB) !important;
   text-shadow: 2px 2px 3px #000000;
+  font-weight: bold;
 }
 
 strong {
