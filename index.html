@@ -79,7 +79,7 @@
             $("#asunto").attr("selected", "selected");
             $("#asunto").on("change", function () {
               if (
-                $("#asunto").val() == "Certificados y verificación de identidad"
+                $("#asunto").val() == "Certificados"
               ) {
                 $("#cert_auto").show();
               } else {
@@ -103,7 +103,7 @@
               if (
                 $("#asunto").val() == "Pagos" ||
                 $("#asunto").val() ==
-                "Certificados y verificación de identidad" ||
+                "Certificados" ||
                 $("#asunto").val() == "Constancia de horas"
               ) {
                 $("#control_send").hide();
@@ -113,36 +113,37 @@
             });
           });
 
-          function enviar() {
-            var isValidToSend = true;
-            var mensajeError = "";
-            if (document.getElementById("nombre").value == "") {
-              isValidToSend = false;
-              mensajeError = "\nFalta nombre";
-            }
-            if (document.getElementById("email").value == "") {
-              isValidToSend = false;
-              mensajeError += "\nFalta email";
-            }
-            if (document.getElementById("asunto").value == "") {
-              isValidToSend = false;
-              mensajeError += "\nDebe seleccionar un asunto";
-            }
-            if (document.getElementById("courseMOOC").value == "") {
-              isValidToSend = false;
-              mensajeError += "\nDebe seleccionar un curso";
-            }
-            if (isValidToSend) document.getElementById("formulario").submit();
-            else alert(mensajeError);
-          }
+          // function enviar() {
+          //   var isValidToSend = true;
+          //   var mensajeError = "";
+          //   if (document.getElementById("nombre").value == "") {
+          //     isValidToSend = false;
+          //     mensajeError = "\nFalta nombre";
+          //   }
+          //   if (document.getElementById("email").value == "") {
+          //     isValidToSend = false;
+          //     mensajeError += "\nFalta email";
+          //   }
+          //   if (document.getElementById("asunto").value == "") {
+          //     isValidToSend = false;
+          //     mensajeError += "\nDebe seleccionar un asunto";
+          //   }
+          //   if (document.getElementById("courseMOOC").value == "") {
+          //     isValidToSend = false;
+          //     mensajeError += "\nDebe seleccionar un curso";
+          //   }
+            
+          //   if (isValidToSend) document.getElementById("formulario").submit();
+          //   else alert(mensajeError);
+          // }
 
-          function validarEmail(email) {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)) {
-              alert("La dirección de email " + valor + " es correcta.");
-            } else {
-              alert("La dirección de email es incorrecta.");
-            }
-          }
+          // function validarEmail(email) {
+          //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)) {
+          //     alert("La dirección de email " + valor + " es correcta.");
+          //   } else {
+          //     alert("La dirección de email es incorrecta.");
+          //   }
+          // }
           // ]]>
         </script>
         <script>
@@ -163,6 +164,7 @@
             }
             /* validación de tipo de curso */
             indice = document.getElementById("asunto").selectedIndex;
+            console.log(indice)
             if (indice == null || indice == 0) {
               alert("Debe seleccionar algún asunto.");
               return false;
@@ -172,15 +174,29 @@
               alert("[ERROR] Debe añadir un descripción de su solicitud");
               return false;
             }
+            response = grecaptcha.getResponse();
+            if (response.length == 0) {
+              //reCaptcha not verified
+              alert("please verify you are humann!");
+             
+              return false;
+            }
             /* si no hemos detectado fallo devolvemos TRUE */
             return true;
           }
           // ]]>
         </script>
+        <script type="text/javascript">
+          var onloadCallback = function () {
+            grecaptcha.render('html_element', {
+              'sitekey': '6LdShJgjAAAAAHZEWxh4xOR4_Wtlz41vCMERrPS-'
+            });
+          };
+        </script>
       </p>
       <form enctype="multipart/form-data" id="formulario" method="post" name="formulario" target="_self"
         onsubmit="return revisar(); return revisarcorreo();" style="margin: 0 2.6rem"
-        action="https://www.indes-idbx.org/help/ticket-enviado-correctamente-RRun.php">
+        action="">
         <div style="display: flex; align-items: center; margin-top: -1rem">
           <div style="margin: 0 10px">
             <label style="
@@ -347,8 +363,8 @@
               line-height: 1.25;
             ">
             <option value="">- Seleccione un tema -</option>
-            <option value="Certificados y verificación de identidad">
-              Certificados y verificación de identidad
+            <option value="Certificados">
+              Certificados
             </option>
             <option value="Constancia de horas">Constancia de horas</option>
             <option value="Pagos">Pagos</option>
@@ -373,31 +389,18 @@
             );
             background: linear-gradient(to bottom, #ffffff -28%, #5d7e95 211%);
           " id="cert_auto" name="cert_auto">
-          <strong>Certificados y verificación de identidad</strong><br />El
-          Banco Interamericano de Desarrollo ofrece certificados verificados por
-          un pago nominal de 25 dólares americanos. Para recibir un certificado
-          verificado es necesario realizar el pago y el proceso de verificación
-          fotográfica de identidad (utilizando una cámara web) antes de la fecha
-          límite estalecida en el curso.<br /><br />Todos los cursos del
-          Programa IDBx del Banco Interamericano de Desarrollo pueden ser
-          tomados gratuitamente. Aunque no se otorgan certificados para aquellos
-          que estén inscritos de manera gratuita, podrás imprimir tu página de
-          progreso para demostrar que haz finalizado el curso de forma
-          exitosa.<br />En el pasado, edX también ofrecía cetificados de Código
-          de Honor. Sin embargo, esta opción ya no existe. Si fuiste parte de un
-          curso que ofrecía un certificado de Código de Honor, todavía tendrás
-          acceso a él en tu panel de control en edx.org.<br /><br />Si tiene
-          problemas para realizar la verificación de identidad, póngase en
-          contacto con
-          <a style="color: #004e70; text-decoration: underline; font-weight: 700"
-            href="mailto:info@edx.org">info@edx.org</a>.<br /><br />Para conseguir más información sobre los
-          certificados
-          verificados, visita la página de
-          <a style="color: #004e70; text-decoration: underline; font-weight: 700"
-            href="https://www.edx.org/es/verified-certificate" target="_new">certificados verificados</a>
-          (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic
-          en
-          <a href="#" style="color: #004e70; text-decoration: underline; font-weight: 700"
+          <strong>Certificados</strong><br />El Banco Interamericano de Desarrollo ofrece todos sus cursos en modalidad
+          certificado verificado y en modalidad asistente. Para recibir un certificado verificado es necesario realizar
+          el pago establecido para cada curso y aprobarlo con un mínimo de 65 % antes de la fecha límite establecida en
+          el curso. <br /><br />En la modalidad asistente se puede tomar el curso de forma totalmente gratuita. Aunque
+          no se otorgan certificados para aquellos que estén inscritos en esta modalidad, podrás imprimir tu página de
+          progreso para demostrar que has finalizado el curso de forma exitosa. <br /><br />En el pasado, edX también
+          ofrecía certificados de "Código de honor". Sin embargo, esta opción ya no existe. Si fuiste parte de un curso
+          que ofrecía un certificado de "Código de honor", todavía tendrás acceso a él en tu panel de control en
+          edx.org. <br /><br />Para conseguir más información sobre los certificados verificados, visita la página de <a
+            target="_new" style="color: #0000ff; text-decoration: underline;"
+            href="https://www.edx.org/es/verified-certificate">certificados verificados</a>. <br /><br />Si aún tiene
+          dudas, haga clic en <a href="#" style="color: #0000ff; text-decoration: underline;"
             onclick="$('#control_send').show();">Generar ticket de consulta</a>.
         </p>
         <p style="
@@ -633,6 +636,7 @@
               </div>
             </div>
           </div>
+          <div id="html_element"></div>
           <div style="display: flex; justify-content: flex-end">
             <input type="submit" name="submit" value="Enviar" style="
                 color: #fff;
@@ -646,7 +650,11 @@
               " />
           </div>
         </div>
+
+
       </form>
+      <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+      </script>
     </div>
   </div>
 </div>

@@ -1,0 +1,291 @@
+<style>
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    border-color: none;
+    -webkit-box-shadow: 1px 1px 13px 2px #004e70;
+    box-shadow: 1px 1px 7px -1px #004e70;
+    outline: #004e70;
+  }
+</style>
+<div>
+  <div style="margin: 0 19rem;">
+    <div>
+      <h1
+        style="color: #004e70; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 2.5rem; padding: 1rem; margin-bottom: 2rem;">
+        Apoio ao participante
+      </h1>
+
+    </div>
+    <div style="margin: 0 2rem;">
+      <p style="font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 1rem; line-height: 24px;">Se
+        você não encontrou uma resposta às suas perguntas nas Perguntas Mais Frequentes - Gerais ou Perguntas Mais
+        Frequentes - Técnicas, preencha o formulário abaixo para que possamos lhe ajudar o quanto antes.
+
+      </p>
+      <p style="font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 1rem; line-height: 24px;">
+        Quando você clica em “Enviar”, uma janela pop-up irá notificá-lo de que o formulário foi enviado e você receberá
+        uma notificação em seu e-mail com o número do pedido. Verifique também o seu lixo eletrônico.
+        Às vezes a resposta aos tickets é desviada para a pasta de spam. Não se esqueça de verificar esta pasta, assim
+        como as caixas de Promoções ou Social, se você as tiver ativas.
+      </p>
+      <hr style="margin: 1rem 0; color: inherit; border: 0; border-top: 1px solid; opacity: 0.25;" />
+    </div>
+    <div class="boxContent span9" style="margin: 0 auto; height: 100vh;">
+      <p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script
+          src="https://www.google.com/recaptcha/enterprise.js?render=6LfAAgYkAAAAANbJxd7y66wYWvU-18540YkSCJit"></script>
+        <script>
+          grecaptcha.enterprise.ready(function () {
+            grecaptcha.enterprise.execute('6LfAAgYkAAAAANbJxd7y66wYWvU-18540YkSCJit', { action: 'login' }).then(function (token) {
+              //alert(token);
+              $('#g-recaptcha-response').val(token);
+            });
+          });
+        </script>
+        <script>
+
+          // <![CDATA[
+          $(document).ready(function () {
+            $("#course").attr("selected", "selected");
+          });
+
+          $(document).ready(function () {
+            $("#asunto").attr("selected", "selected");
+            $("#asunto").on("change", function () {
+              if (
+                $("#asunto").val() == "Certificados"
+              ) {
+                $("#cert_auto").show();
+              } else {
+                $("#cert_auto").hide();
+              }
+              if ($("#asunto").val() == "Constância de horas do curso") {
+                $("#const_auto").show();
+              } else {
+                $("#const_auto").hide();
+              }
+              if ($("#asunto").val() == "Pagamentos") {
+                $("#pagos_auto").show();
+              } else {
+                $("#pagos_auto").hide();
+              }
+              if ($("#asunto").val() == "Outros problemas") {
+                $("#otros_auto").show();
+              } else {
+                $("#otros_auto").hide();
+              }
+              if (
+                $("#asunto").val() == "Pagamentos" ||
+                $("#asunto").val() ==
+                "Certificados" ||
+                $("#asunto").val() == "Constância de horas do curso"
+              ) {
+                $("#control_send").hide();
+              } else {
+                $("#control_send").show();
+              }
+            });
+          });
+        </script>
+        <script>
+          // <![CDATA[
+          function revisar() {
+            valor = document.getElementById("nombre").value;
+            if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+              alert("[ERROR] Você deve adicionar um nome");
+              return false;
+            }
+            /* validación del e-mail */
+            var ercorreo = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
+            if (!ercorreo.test(formulario.email.value)) {
+              alert(
+                "O endereço inserido não é um endereço de e-mail válido."
+              );
+              return false;
+            }
+            /* validación de tipo de curso */
+            indice = document.getElementById("asunto").selectedIndex;
+            console.log(indice)
+            if (indice == null || indice == 0) {
+              alert("Você deve selecionar um assunto.");
+              return false;
+            }
+            valor = document.getElementById("mensaje").value;
+            if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+              alert("[ERROR] Você deve acrescentar uma descrição do seu pedido");
+              return false;
+            }
+            // response = grecaptcha.getResponse();
+            // if (response.length == 0) {
+            //   //reCaptcha not verified
+            //   alert("verifique se você é um humano!");
+
+            //   return false;
+            // }
+            /* si no hemos detectado fallo devolvemos TRUE */
+            return true;
+          }
+          // ]]>
+        </script>
+        <!-- <script type="text/javascript">
+          var onloadCallback = function () {
+            grecaptcha.render('html_element', {
+              'sitekey': '6LdShJgjAAAAAHZEWxh4xOR4_Wtlz41vCMERrPS-'
+            });
+          };
+        </script> -->
+      </p>
+      <form enctype="multipart/form-data" id="formulario" method="post" name="formulario" target="_self"
+        onsubmit="return revisar(); return revisarcorreo();" style="margin: 0 2.6rem;" action="ticket-enviado-correctamente-run-captcha.php">
+        <div style="display: flex; justify-content: center; margin-bottom: -9px;">
+          <div style="margin: 10px;"><label
+              style="position: absolute; opacity: 0.65; transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); padding: 1rem 0.75rem; overflow: hidden; text-align: start; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; border: 1px solid transparent; transform-origin: 0 0; transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; display: inline-block; font-family: Arial, Helvetica, sans-serif;">Nome
+              <span style="color: #e9540d;">*</span> </label> <input id="nombre" name="nombre" size="50" type="text"
+              style="display: block; width: 100%; padding: 1.375rem 0.75rem 0.375rem; font-weight: 400; color: #212529; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0.375rem; height: calc(3.5rem + 2px); line-height: 1.25;" />
+          </div>
+          <div style="margin: 10px;"><label for="inputEmail"
+              style="position: absolute; opacity: 0.65; transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); padding: 1rem 0.75rem; overflow: hidden; text-align: start; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; border: 1px solid transparent; transform-origin: 0 0; transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; display: inline-block; font-family: Arial, Helvetica, sans-serif;">E-mail
+              <span style="color: #e9540d;">*</span> </label> <input id="email" name="email" size="50" type="email"
+              style="display: block; width: 100%; padding: 1.375rem 0.75rem 0.375rem; font-weight: 400; color: #212529; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0.375rem; height: calc(3.5rem + 2px); line-height: 1.25;" />
+          </div>
+        </div>
+        <!--CURSOS MOOC-->
+        <div style="margin: 10px;">
+          <p style="margin: 0;" id="MOOC" name="MOOC"><label
+              style="position: absolute; opacity: 0.65; transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); padding: 1rem 0.75rem; overflow: hidden; text-align: start; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; border: 1px solid transparent; transform-origin: 0 0; transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; display: inline-block; font-family: Arial, Helvetica, sans-serif;">Curso</label><select
+              name="courseMOOC"
+              style="display: block; width: 100%; padding: 1.375rem 0.75rem 0.375rem; -moz-padding-start: calc(0.75rem - 3px); font-size: 1rem; font-weight: 400; background-color: #e9ecef; background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 16px 12px; border: 1px solid #ced4da; border-radius: 0.375rem; height: calc(3.5rem + 2px); line-height: 1.25;"
+              aria-label="Select one course" disabled="disabled">
+              <option value="Gestão de riscos em projetos" selected="selected">
+                Gestão de riscos em projetos</option>
+            </select></p>
+        </div>
+        <div style="margin: 10px;"><label
+            style="position: absolute; opacity: 0.65; transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); padding: 1rem 0.75rem; overflow: hidden; text-align: start; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; border: 1px solid transparent; transform-origin: 0 0; transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; display: inline-block; font-family: Arial, Helvetica, sans-serif;">Assunto
+            <span style="color: #e9540d;">*</span> </label><select id="asunto" name="asunto"
+            style="display: block; width: 100%; padding: 1.375rem 0.75rem 0.375rem; -moz-padding-start: calc(0.75rem - 3px); font-size: 1rem; font-weight: 400; color: #212529; background-color: #fff; background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 16px 12px; border: 1px solid #ced4da; border-radius: 0.375rem; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; -webkit-appearance: none; -moz-appearance: none; appearance: none; height: calc(3.5rem + 2px); line-height: 1.25;">
+            <option value="">Selecione um tema</option>
+            <option value="Certificados">Certificados</option>
+            <option value="Constância de horas do curso">Constância de horas do curso</option>
+            <option value="Pagamentos">Pagamentos</option>
+            <option value="Problemas técnicos">Problemas técnicos</option>
+            <option value="Outros problemas">Outros problemas</option>
+            <option value="Informação geral">Informação geral</option>
+          </select></div>
+        <p style="border: solid #004E70; font-family: Arial, Helvetica, sans-serif; display: none; font-size: 0.9rem; line-height: 1.3; margin: 1rem; padding: 0.6rem;"
+          id="cert_auto" name="cert_auto"><strong>Certificados</strong><br />O Banco Interamericano de Desenvolvimento
+          oferece todos os seus cursos em modo de certificado verificado e em modo de assistente. Para receber um
+          certificado verificado é necessário fazer o pagamento estabelecido para cada curso e aprová-lo com um mínimo
+          de 65% antes do prazo estabelecido no curso.<br /><br />No modo de assistente, o curso pode ser feito
+          completamente sem custos. Embora não sejam concedidos certificados para os inscritos nesta modalidade, você
+          poderá imprimir sua página de progresso para mostrar que completou o curso com sucesso.<br /><br />No passado,
+          a edX também oferecia certificados de "Código de Honra". No entanto, esta opção não existe mais. Se você fez
+          parte de um curso que ofereceu um certificado de "Código de Honra", você ainda terá acesso a ele em seu painel
+          do edx.org.<br /><br />Para mais informações sobre certificados verificados, visite a página de <a
+            target="_new" style="color: #004e70; text-decoration: underline; font-weight: bold;"
+            href="https://www.edx.org/es/verified-certificate">certificados verificados</a>. <br /><br />Se você ainda
+          tiver dúvidas, clique em <a href="#" style="color: #004e70; text-decoration: underline; font-weight: bold;"
+            onclick="$('#control_send').show();">Gerar ticket de consulta</a>.</p>
+        <p style="border: solid #004E70; font-family: Arial, Helvetica, sans-serif; display: none; font-size: 0.9rem; line-height: 1.3; margin: 1rem; padding: 0.6rem;"
+          id="const_auto" name="const_auto"><strong>Constância de horas do curso
+          </strong><br />O Banco Interamericano de
+          Desenvolvimento emite um registro de horas que devem ser acompanhadas juntamente com o respectivo certificado
+          verificado. O Certificado de Compromisso de Tempo está disponível na seção "Course Handouts" na coluna da
+          direita e na página inicial do curso (opção "Curso" no menu principal).<br /><br />Todos os cursos do Banco
+          Interamericano de Desenvolvimento podem ser feitos sem custos. Embora os certificados não sejam concedidos aos
+          inscritos nesta modalidade, você poderá imprimir sua página de progresso para mostrar que completou o curso
+          com sucesso.
+          <br /><br />Se você ainda tiver dúvidas, clique em <a
+            style="color: #004e70; text-decoration: underline; font-weight: bold;" href="#"
+            onclick="$('#control_send').show();">Gerar ticket de consulta</a>.
+        </p>
+        <p style="border: solid #004E70; font-family: Arial, Helvetica, sans-serif; display: none; font-size: 0.9rem; line-height: 1.3; margin: 1rem; padding: 0.6rem;"
+          id="pagos_auto" name="pagos_auto"><strong>Pagamentos</strong><br />O Banco Interamericano de Desenvolvimento
+          não trata de pagamentos dentro da plataforma edX. Para fazer um pagamento, você precisará entrar em seu painel
+          de controle clicando em seu nome no canto superior direito da página edX, e clicar no botão "Optar por
+          Certificado Verificado" no curso correspondente. Uma vez feito isso, você poderá pagar com um cartão de
+          crédito ou PayPal. Se você tiver um código de cupom, lembre-se de usá-lo nesta tela.<br /><br />Se você tiver
+          problemas para fazer um pagamento, favor contatar
+          <a style="color: #004e70; text-decoration: underline; font-weight: bold;"
+            href="mailto:info@edx.org">info@edx.org</a>.<br /><br />Para obter mais informações sobre certificados
+          verificados, visite a página de <a style="color: #004e70; text-decoration: underline; font-weight: bold;"
+            href="https://www.edx.org/es/verified-certificate" target="_new">certificados verificados</a> (disponível
+          somente em inglês) <br /><br />Se você ainda tiver dúvidas, clique em <a href="#"
+            style="color: #004e70; text-decoration: underline; font-weight: bold;"
+            onclick="$('#control_send').show();">Gerar bilhete de consulta</a>.
+        </p>
+        <small style="font-family: Arial, Helvetica, sans-serif; display: none; color: #e9540d; margin: 10px;"
+          id="otros_auto" name="otros_auto"> ADVERTÊNCIA: Se você escolher a opção "outros problemas", levaremos mais
+          tempo para processar a solicitação.
+        </small>
+        <div id="control_send" style="margin: 10px 0;">
+          <div style="margin: 10px;"><label
+              style="position: absolute; opacity: 0.65; transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); padding: 1rem 0.75rem; overflow: hidden; text-align: start; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; border: 1px solid transparent; transform-origin: 0 0; transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; display: inline-block; font-family: Arial, Helvetica, sans-serif;">Descrição
+              do problema <span style="color: #e9540d;">*</span> </label> <textarea
+              style="display: block; resize: vertical; height: 100px; min-height: calc(1.5em + 0.75rem + 2px); width: 100%; padding: 1.375rem 0.75rem 0.375rem; font-size: 1rem; font-weight: 400; line-height: 1.5; color: #212529; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0.375rem; transition: border-color 0.15s ease-in-out,                  box-shadow 0.15s ease-in-out; margin: 0 0 2rem;"
+              id="mensaje" name="mensaje" rows="10"></textarea></div>
+          <div>
+            <hr style="margin: 1rem 0; color: inherit; border: 0; border-top: 1px solid; opacity: 0.25;" />
+            <h2
+              style="font-family: Inter, Arial, Helvetica, sans-serif; font-size: 1.5em; color: #004e70; font-weight: 600; margin-top: 2.5rem;">
+              Opcional</h2>
+            <div style="margin: 1rem 0;"><label><strong
+                  style="font-family: Inter, Arial, Helvetica, sans-serif; color: #004e70;">Anexar arquivo</strong>
+                <input id="archivo1" name="archivo1" type="file"
+                  style="display: block; width: 100%; padding: 0; font-size: 1rem; font-weight: 400; color: #212529; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0.375rem; transition: border-color 0.15s ease-in-out,                      box-shadow 0.15s ease-in-out; line-height: 1.25;" />
+              </label>
+              <div><small
+                  style="font-family: Inter, Arial, Helvetica, sans-serif; margin-top: 0.25rem; font-size: 0.75em; color: #6c757d;">Você
+                  pode anexar documentos e capturas de tela.
+
+                </small></div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: flex-start; margin: 1rem 0;"><strong
+                style="font-family: Inter, Arial, Helvetica, sans-serif; color: #004e70; margin: 0 4px;">Navegador</strong>:
+              <div style="margin: 0 10px; display: flex;"><input name="browser" type="radio" value="Explorer" /> <label
+                  for="Explorer"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Explorer</label></div>
+              <div style="margin: 0 10px; display: flex;"><input name="browser" type="radio" value="Chrome" /> <label
+                  for="Chrome" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Chrome</label>
+              </div>
+              <div style="margin: 0 10px; display: flex;"><input name="browser" type="radio" value="Safari" /> <label
+                  for="Safari" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Safari</label>
+              </div>
+              <div style="margin: 0 10px; display: flex;"><input name="browser" type="radio" value="Mozilla" /> <label
+                  for="Mozilla" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Mozilla</label>
+              </div>
+              <div style="margin: 0 10px; display: flex;"><input name="browser" type="radio" value="Otro" /> <label
+                  for="Otro" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Otro</label></div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: flex-start; margin: 1rem 0;"><strong
+                style="font-family: Inter, Arial, Helvetica, sans-serif; color: #004e70; margin: 0 4px;">Sistema
+                operativo</strong>:
+              <div style="margin: 0 10px; display: flex;"><input name="OS" type="radio" value="Windows" /> <label
+                  for="Windows" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Windows</label>
+              </div>
+              <div style="margin: 0 10px; display: flex;"><input name="OS" type="radio" value="OS X" /> <label
+                  for="OS X" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">OS X</label></div>
+              <div style="margin: 0 10px; display: flex;"><input name="OS" type="radio" value="Android" /> <label
+                  for="Android" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Android</label>
+              </div>
+              <div style="margin: 0 10px; display: flex;"><input name="OS" type="radio" value="iOS" /> <label for="iOS"
+                  style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">iOS</label></div>
+              <div style="margin: 0 10px; display: flex;"><input name="OS" type="radio" value="Otro" /> <label
+                  for="Otro" style="font-family: Inter, Arial, Helvetica, sans-serif; margin: 0 4px;">Otro</label></div>
+            </div>
+          </div>
+          <!-- <div id="html_element"></div> -->
+          <input id="g-recaptcha-response" name="g-recaptcha-response" type="hidden" value="" />
+          <div style="display: flex; justify-content: flex-end;"><input type="submit" name="submit" value="Enviar"
+              style="color: #004e70; padding: 10px; border: solid; border-radius: 0.375rem; cursor: pointer; background-color: #5d7e95; font-family: Arial, Helvetica, sans-serif; font-size: 1rem;" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit" async=""
+      defer="defer">
+      </script> -->
+  </div>
+</div>

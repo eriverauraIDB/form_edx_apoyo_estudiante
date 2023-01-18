@@ -1,54 +1,35 @@
+<div style="
+    background: #004e70;
+    background: -moz-linear-gradient(top, #004e70 0%, #5d7e95 100%);
+    background: -webkit-linear-gradient(top, #004e70 0%, #5d7e95 100%);
+    background: linear-gradient(to bottom, #004e70 0%, #5d7e95 100%);
+    border-radius: 0px;
+    height: 6.87rem;
+    display: flex;
+    align-items: center;
+    text-transform:uppercase;
+  ">
+  <h1 style="
+      color: #fefefe;
+      font-family: Arial, Helvetica, sans-serif;
+      text-shadow: 2px 2px 3px #000000;
+      margin: 2.6rem;
+      font-weight: 500;
+      line-height: 1.2;
+      font-size: 2.5rem;
+    " lang="ES-CL">
+    Apoyo al participante
+  </h1>
+</div>
 <p>
-  <img
-    src="https://studio.edx.org/asset-v1:IDBx+51x+3T2021+type@asset+block@Banner_003.jpg"
-    alt="Banner"
-    width="100%"
-  />
-</p>
-<p></p>
-<h3>
-  <span style="font-family: verdana, geneva"
-    ><span lang="ES-CL"
-      ><strong
-        ><span style="color: #006289">APOYO AL PARTICIPANTE</span></strong
-      ></span
-    ></span
-  >
-</h3>
-<p>
-  Si no has encontrado respuesta a tus dudas ni en<span style="color: #0000ff"
-    ><strong> </strong></span
-  ><span style="text-decoration: underline; color: #0000ff"
-    ><strong
-      ><a
-        href="https://courses.edx.org/courses/course-v1:IDBx+IDB51x+3T2021/b45fb3a6981c44599ff53e5f0bd1f049/"
-        target="_blank"
-        rel="noopener"
-        ><span style="color: #0000ff; text-decoration: underline"
-          >FAQ Generales</span
-        ></a
-      ></strong
-    ></span
-  >
-  ni en
-  <span style="text-decoration: underline; color: #0000ff"
-    ><strong
-      ><a
-        href="https://courses.edx.org/courses/course-v1:IDBx+IDB51x+3T2021/392b9479ac9f4b02ada54e5a47a70d3d/"
-        target="_blank"
-        rel="noopener"
-        ><span style="color: #0000ff; text-decoration: underline"
-          >FAQ Técnicas</span
-        ></a
-      ></strong
-    ></span
-  >, por favor, rellena el formulario que verás a continuación para que podamos
-  ayudarte lo antes posible.
+  Si no has encontrado respuesta a tus dudas en las pestañas "FAQ Generales" o "FAQ Técnicas", por favor, completa el
+  formulario que verás a continuación para que podamos ayudarte lo antes posible.
+
 </p>
 <p>
-  Cuando pulses en <em>enviar</em>, una ventana emergente te avisará que el
-  formulario ha sido enviado y recibirás una notificación en tu correo con el
-  número de solicitud. Por favor, verifica tu bandeja de correo no deseado.
+  Cuando pulses en "Enviar", una ventana emergente te avisará que el formulario ha sido enviado y recibirás una
+  notificación en tu correo con el número de solicitud. Por favor, verifica tu bandeja de correo no deseado.
+
 </p>
 <div class="boxContent span9" style="margin: 0 auto">
   <p>
@@ -62,9 +43,7 @@
       $(document).ready(function () {
         $("#asunto").attr("selected", "selected");
         $("#asunto").on("change", function () {
-          if (
-            $("#asunto").val() == "Certificados y verificación de identidad"
-          ) {
+          if ($("#asunto").val() == "Certificados") {
             $("#cert_auto").show();
           } else {
             $("#cert_auto").hide();
@@ -86,7 +65,7 @@
           }
           if (
             $("#asunto").val() == "Pagos" ||
-            $("#asunto").val() == "Certificados y verificación de identidad" ||
+            $("#asunto").val() == "Certificados" ||
             $("#asunto").val() == "Constancia de horas"
           ) {
             $("#control_send").hide();
@@ -159,45 +138,23 @@
       // ]]>
     </script>
   </p>
-  <form
-    action="https://www.indes-idbx.org/help/ticket-enviado-correctamente-RRun.php"
-    enctype="multipart/form-data"
-    id="formulario"
-    method="post"
-    name="formulario"
-    target="_self"
-    onsubmit="return revisar(); return revisarcorreo();"
-  >
+  <form action="https://www.indes-idbx.org/help/ticket-enviado-correctamente-RRun.php" enctype="multipart/form-data"
+    id="formulario" method="post" name="formulario" target="_self" onsubmit="return revisar(); return revisarcorreo();">
     <p style="margin-left: 9%">
-      <strong>Nombre</strong> <span style="color: #ff0000">*</span> <br /><input
-        id="nombre"
-        name="nombre"
-        size="50"
-        type="text"
-        style="width: 90%; padding: 10px"
-      />
+      <strong>Nombre</strong> <span style="color: #ff0000">*</span> <br /><input id="nombre" name="nombre" size="50"
+        type="text" style="width: 90%; padding: 10px" />
     </p>
     <p style="margin-left: 9%">
       <strong>E-mail</strong> (la dirección asociada a tu cuenta en edX)
-      <span style="color: #ff0000">*</span> <br /><input
-        id="email"
-        name="email"
-        size="50"
-        type="text"
-        style="width: 90%; padding: 10px"
-      />
+      <span style="color: #ff0000">*</span> <br /><input id="email" name="email" size="50" type="text"
+        style="width: 90%; padding: 10px" />
     </p>
     <!--CURSOS MOOC-->
     <p style="margin-left: 9%" id="MOOC" name="MOOC">
-      <strong>Curso</strong> <span style="color: #ff0000">*</span> <br /><select
-        name="courseMOOC"
-        style="width: 90%; height: 40px"
-      >
+      <strong>Curso</strong> <span style="color: #ff0000">*</span> <br /><select name="courseMOOC"
+        style="width: 90%; height: 40px" disabled>
         �_�_�_�_
-        <option
-          value="Acuerdos comerciales para fomentar las cadenas regionales de valor"
-          selected="selected"
-        >
+        <option value="Acuerdos comerciales para fomentar las cadenas regionales de valor" selected="selected">
           Acuerdos comerciales para fomentar las cadenas regionales de valor
         </option>
       </select>
@@ -206,9 +163,7 @@
       <strong>Asunto</strong> <span style="color: #ff0000">*</span>
       <br /><select id="asunto" name="asunto" style="width: 90%; height: 40px">
         <option value="">- Seleccione un tema -</option>
-        <option value="Certificados y verificación de identidad">
-          Certificados y verificación de identidad
-        </option>
+        <option value="Certificados">Certificados</option>
         <option value="Constancia de horas">Constancia de horas</option>
         <option value="Pagos">Pagos</option>
         <option value="Problemas técnicos">Problemas técnicos</option>
@@ -217,40 +172,35 @@
       </select>
     </p>
     <p style="margin-left: 9%; display: none" id="cert_auto" name="cert_auto">
-      <strong>Certificados y verificación de identidad</strong><br />El Banco
-      Interamericano de Desarrollo ofrece certificados verificados por un pago
-      nominal de 25 dólares americanos. Para recibir un certificado verificado
-      es necesario realizar el pago y el proceso de verificación fotográfica de
-      identidad (utilizando una cámara web) antes de la fecha límite estalecida
-      en el curso.<br /><br />Todos los cursos del Programa IDBx del Banco
-      Interamericano de Desarrollo pueden ser tomados gratuitamente. Aunque no
-      se otorgan certificados para aquellos que estén inscritos de manera
-      gratuita, podrás imprimir tu página de progreso para demostrar que haz
-      finalizado el curso de forma exitosa.<br />En el pasado, edX también
-      ofrecía cetificados de Código de Honor. Sin embargo, esta opción ya no
-      existe. Si fuiste parte de un curso que ofrecía un certificado de Código
-      de Honor, todavía tendrás acceso a él en tu panel de control en
-      edx.org.<br /><br />Si tiene problemas para realizar la verificación de
-      identidad, póngase en contacto con
-      <a
-        style="color: #0000ff; text-decoration: underline"
-        href="mailto:info@edx.org"
-        >info@edx.org</a
-      >.<br /><br />Para conseguir más información sobre los certificados
-      verificados, visita la página de
-      <a
-        style="color: #0000ff; text-decoration: underline"
-        href="https://www.edx.org/es/verified-certificate"
-        target="_new"
-        >certificados verificados</a
-      >
-      (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic en
-      <a
-        href="#"
-        style="color: #0000ff; text-decoration: underline"
-        onclick="$('#control_send').show();"
-        >Generar ticket de consulta</a
-      >.
+      <strong>Certificados</strong><br />
+      El Banco Interamericano de Desarrollo ofrece todos sus cursos en modalidad
+      certificado verificado y en modalidad asistente. Para recibir un
+      certificado verificado es necesario realizar el pago establecido para cada
+      curso y aprobarlo con un mínimo de 65 % antes de la fecha límite
+      establecida en el curso.
+      <br />
+      <br />
+      En la modalidad asistente se puede tomar el curso de forma totalmente
+      gratuita. Aunque no se otorgan certificados para aquellos que estén
+      inscritos en esta modalidad, podrás imprimir tu página de progreso para
+      demostrar que has finalizado el curso de forma exitosa.
+      <br />
+      <br />
+      En el pasado, edX también ofrecía certificados de "Código de honor". Sin
+      embargo, esta opción ya no existe. Si fuiste parte de un curso que ofrecía
+      un certificado de "Código de honor", todavía tendrás acceso a él en tu
+      panel de control en edx.org.
+      <br />
+      <br />
+      Para conseguir más información sobre los certificados verificados, visita
+      la página de
+      <a target="_new" style="color: #0000ff; text-decoration: underline"
+        href="https://www.edx.org/es/verified-certificate">certificados verificados</a>.
+      <br />
+      <br />
+      Si aún tiene dudas, haga clic en
+      <a href="#" style="color: #0000ff; text-decoration: underline" onclick="$('#control_send').show();">Generar ticket
+        de consulta</a>.
     </p>
     <p style="margin-left: 9%; display: none" id="const_auto" name="const_auto">
       <strong>Constancia de horas</strong><br />El Banco Interamericano de
@@ -263,12 +213,8 @@
       manera gratuita, podrás imprimir tu página de progreso para demostrar que
       haz finalizado el curso de forma exitosa. <br /><br />Si aún tiene dudas,
       haga clic en
-      <a
-        style="color: #0000ff; text-decoration: underline"
-        href="#"
-        onclick="$('#control_send').show();"
-        >Generar ticket de consulta</a
-      >.
+      <a style="color: #0000ff; text-decoration: underline" href="#" onclick="$('#control_send').show();">Generar ticket
+        de consulta</a>.
     </p>
     <p style="margin-left: 9%; display: none" id="pagos_auto" name="pagos_auto">
       <strong>Pagos</strong><br />El Banco Interamericano de Desarrollo no
@@ -280,31 +226,16 @@
       PayPal. Si cuenta con un código de cupón, recuerde utilizarlo en esta
       pantalla.<br /><br />Si tiene problemas para realizar un pago, póngase en
       contacto con
-      <a
-        style="color: #0000ff; text-decoration: underline"
-        href="mailto:info@edx.org"
-        >info@edx.org</a
-      >.<br /><br />Para conseguir más información sobre los certificados
+      <a style="color: #0000ff; text-decoration: underline" href="mailto:info@edx.org">info@edx.org</a>.<br /><br />Para
+      conseguir más información sobre los certificados
       verificados, visita la página de
-      <a
-        style="color: #0000ff; text-decoration: underline"
-        href="https://www.edx.org/es/verified-certificate"
-        target="_new"
-        >certificados verificados</a
-      >
+      <a style="color: #0000ff; text-decoration: underline" href="https://www.edx.org/es/verified-certificate"
+        target="_new">certificados verificados</a>
       (disponible sólo en inglés). <br /><br />Si aún tiene dudas, haga clic en
-      <a
-        href="#"
-        style="color: #0000ff; text-decoration: underline"
-        onclick="$('#control_send').show();"
-        >Generar ticket de consulta</a
-      >.
+      <a href="#" style="color: #0000ff; text-decoration: underline" onclick="$('#control_send').show();">Generar ticket
+        de consulta</a>.
     </p>
-    <p
-      style="margin-left: 9%; display: none; color: red"
-      id="otros_auto"
-      name="otros_auto"
-    >
+    <p style="margin-left: 9%; display: none; color: red" id="otros_auto" name="otros_auto">
       AVISO: Si elige la opción "Otros problemas" tardaremos más tiempo en
       gestionar la solicitud.
     </p>
@@ -314,26 +245,16 @@
         <span style="color: #ff0000">*</span>
       </p>
       <p style="margin-left: 9%">
-        <textarea
-          style="width: 90%"
-          id="mensaje"
-          name="mensaje"
-          rows="10"
-        ></textarea>
+        <textarea style="width: 90%" id="mensaje" name="mensaje" rows="10"></textarea>
       </p>
-      <div
-        style="
+      <div style="
           border-bottom: 3px solid rgba(0, 61, 87, 0.73);
           border-top: 3px solid rgba(0, 61, 87, 0.73);
-        "
-      >
+        ">
         <p style="margin-left: 9%"><strong>RECOMENDADO </strong>(Opcional)</p>
         <p style="margin-left: 14%">
-          <strong>Adjuntar archivo </strong
-          ><input id="archivo1" name="archivo1" type="file" /><br /><span
-            style="font-size: small"
-            >Puede incluir capturas de pantalla o documentos.</span
-          >
+          <strong>Adjuntar archivo </strong><input id="archivo1" name="archivo1" type="file" /><br /><span
+            style="font-size: small">Puede incluir capturas de pantalla o documentos.</span>
         </p>
         <p style="margin-left: 14%">
           <strong>Navegador</strong>:
@@ -353,12 +274,7 @@
         </p>
       </div>
       <p style="margin-left: 9%; float: right; padding: 10px">
-        <input
-          type="submit"
-          name="submit"
-          value="Enviar"
-          style="padding: 10px; font-size: 20px"
-        />
+        <input type="submit" name="submit" value="Enviar" style="padding: 10px; font-size: 20px" />
       </p>
     </div>
   </form>
